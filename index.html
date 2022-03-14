@@ -46,8 +46,6 @@
                     let difference = date - currentDate;
                     let differenceToString = difference => {
                         let zeroPad = (num, places) => String(num).padStart(places, '0');
-                        let weeks = Math.floor(difference / (7 * 24 * 60 * 60 * 1000));
-                        difference -= weeks * 7 * 24 * 60 * 60 * 1000;
                         let days = Math.floor(difference / (24 * 60 * 60 * 1000));
                         difference -= days * 24 * 60 * 60 * 1000;
                         let hours = Math.floor(difference / (60 * 60 * 1000));
@@ -57,7 +55,7 @@
                         let seconds = Math.floor(difference / 1000);
                         difference -= seconds * 1000;
                         let milliseconds = difference;
-                        return `${zeroPad(weeks, 2)}주 ${zeroPad(days, 2)}일 ${zeroPad(hours, 2)}시간 ${zeroPad(minutes, 2)}분 ${zeroPad(seconds, 2)}.${zeroPad(milliseconds, 3)}초`;
+                        return `${zeroPad(days, 1)}일 ${zeroPad(hours, 2)}시간 ${zeroPad(minutes, 2)}분 ${zeroPad(seconds, 2)}.${zeroPad(milliseconds, 3)}초`;
                     };
                     if (difference <= 0) {
                         timerEl.innerText = "전역날이 오긴 하네";
